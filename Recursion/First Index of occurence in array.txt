@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int findFirstIndex(int a[],int i,int n,int data){
+    if(i==n){
+        return -1;
+    }
+    if(a[i]==data){
+        return i;
+    }
+    return findFirstIndex(a,i+1,n,data);
+}
+int main(){
+    int n=5;
+    int a[]={2,3,4,5,6,3,5,4};
+    int data; //data to search
+    cin>>data;
+    cout<<findFirstIndex(a,0,n,data);
+}

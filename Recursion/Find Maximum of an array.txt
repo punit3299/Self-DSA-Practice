@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int findMax(int a[],int i,int n){
+    if(i==n){
+        return INT_MIN;
+    }
+    int maxm = max(a[i],findMax(a,i+1,n));
+    return maxm;
+}
+int main(){
+    int n=5;
+    int a[]={20,40,50,30,10};
+    cout<<findMax(a,0,n);
+}

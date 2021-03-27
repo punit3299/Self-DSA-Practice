@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void printArray(int a[],int i,int n){
+    if(i==n){
+        return;
+    }
+    cout<<a[i]<<" ";
+    printArray(a,i+1,n);
+}
+int main(){
+    int a[5]={10,20,30,40,50};
+    printArray(a,0,5);
+}

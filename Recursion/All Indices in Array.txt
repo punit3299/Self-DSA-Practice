@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void findAllIndex(int a[],int i,int n,int data,vector<int> &res){
+    if(i==n){
+        return;
+    }
+    if(a[i]==data){
+        res.push_back(i);
+    }
+    findAllIndex(a,i+1,n,data,res);
+}
+int main(){
+    int n=9;
+    int a[]={2,3,4,5,6,3,5,4,5};
+    int data; //data to search
+    cin>>data;
+    vector<int> res;
+    findAllIndex(a,0,n,data,res);
+    for(int i=0;i<res.size();i++){
+        cout<<res[i]<<" ";
+    }
+}

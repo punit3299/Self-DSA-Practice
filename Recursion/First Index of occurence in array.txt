@@ -11,6 +11,7 @@ int findFirstIndex(int a[],int i,int n,int data){
     return findFirstIndex(a,i+1,n,data);
 }
 int main(){
+cout
     int n=5;
     int a[]={2,3,4,5,6,3,5,4};
     int data; //data to search

@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//abc
+vector<string> printSubsequence(string s){
+    
+    if(s.size()==0){
+        vector<string> res;
+        res.push_back("");
+        return res;
+    }
+    
+    char l = s[0]; //a
+    string r = s.substr(1,s.length()); //bc
+    vector<string> temp=printSubsequence(r);
+    
+    vector<string> result;
+    for(int i=0;i<temp.size();i++){
+        result.push_back(temp[i]);
+        result.push_back(l+temp[i]);
+    }
+    return result;
+}
+
+int main(){
+    string s="abc";
+    vector<string> result=printSubsequence(s);
+    for(int i=0;i<result.size();i++){
+        cout<<result[i]<<endl;
+    }
+}

@@ -16,7 +16,9 @@ vector<string> getKeypadComb(string input, string codes[]){
     
     vector<string> result;
     
-    string s = codes[l-'0'];
+    string s = codes[l-'0']; // getting value of 6 - pqrs
+    
+    //looping each char of pqrs to all possible results of 78
     for(int i=0;i<s.length();i++){
         char ch = s[i];
         for(int j=0;j<temp.size();j++){

@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<string> getKeypadComb(string input, string codes[]){
+    
+    if(input.length()==0){
+        vector<string> t;
+        t.push_back("");
+        return t;
+    }
+    
+    char l = input[0]; //6
+    string r = input.substr(1, input.length()); //78
+    
+    vector<string> temp = getKeypadComb(r,codes); // return all possible results for 78
+    
+    vector<string> result;
+    
+    string s = codes[l-'0'];
+    for(int i=0;i<s.length();i++){
+        char ch = s[i];
+        for(int j=0;j<temp.size();j++){
+            result.push_back(ch+temp[j]);
+        }
+    }
+    
+    return result;
+    
+}
+
+int main(){
+    string codes[]={".,","abc","def","ghi","jkl","mno","pqrs","tu","vwx","yz"};
+    string input="678";
+    //Total possible result = len(codes[5])*len(codes[6])*len(codes[7])
+    vector<string> result = getKeypadComb(input,codes);
+    for(int i=0;i<result.size();i++){
+        cout<<result[i]<<" ";
+    }
+}

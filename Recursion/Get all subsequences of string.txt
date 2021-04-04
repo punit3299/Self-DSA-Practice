@@ -2,7 +2,7 @@
 using namespace std;
 
 //abc
-vector<string> printSubsequence(string s){
+vector<string> getSubsequence(string s){
     
     if(s.size()==0){
         vector<string> res;
@@ -12,7 +12,7 @@ vector<string> printSubsequence(string s){
     
     char l = s[0]; //a
     string r = s.substr(1,s.length()); //bc
-    vector<string> temp=printSubsequence(r);
+    vector<string> temp=getSubsequence(r);
     
     vector<string> result;
     for(int i=0;i<temp.size();i++){
@@ -24,7 +24,7 @@ vector<string> printSubsequence(string s){
 
 int main(){
     string s="abc";
-    vector<string> result=printSubsequence(s);
+    vector<string> result=getSubsequence(s);
     for(int i=0;i<result.size();i++){
         cout<<result[i]<<endl;
     }

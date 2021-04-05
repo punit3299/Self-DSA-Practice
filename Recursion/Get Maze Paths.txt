@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<string> getMazePaths(int i,int j,int m,int n){
+	
+	if(i==m && j==n){
+		vector<string> temp;
+		temp.push_back("");
+		return temp;
+	}
+	
+	vector<string> h;
+	vector<string> v;
+	
+	if(i<m){
+		v = getMazePaths(i+1,j,m,n);
+	}
+	if(j<n){
+		h = getMazePaths(i,j+1,m,n);
+	}
+	
+	vector<string> paths;
+	
+	for(int i=0;i<h.size();i++){
+		paths.push_back("h"+h[i]);
+	}
+	
+	for(int i=0;i<v.size();i++){
+		paths.push_back("v"+v[i]);
+	}
+	
+	return paths;
+}
+
+//To reach leftmost corner to rightmost corner - Get all the ways
+int main(){
+	int m=3,n=3;
+	int i=1,j=1;
+	vector<string> result = getMazePaths(i,j,m,n);
+	for(int i=0;i<result.size();i++){
+		cout<<result[i]<<endl;
+	}
+	return 0;
+}

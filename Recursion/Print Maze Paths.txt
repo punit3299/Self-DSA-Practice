@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void printMazePaths(int i,int j,int m,int n,string res){
+    
+    if(i>m || j>n){
+        return;
+    }
+    
+    if(i==m && j==n){
+        cout<<res<<endl;
+        return;
+    }
+    
+    if(i<m){
+        printMazePaths(i+1,j,m,n,res+"v");
+    }
+    if(j<n){
+        printMazePaths(i,j+1,m,n,res+"h");
+    }
+    
+}
+
+int main(){
+    
+    int m=3,n=3;
+    int i=1,j=1;
+    string res="";
+    printMazePaths(i,j,m,n,res);
+    
+}

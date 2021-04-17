@@ -1,0 +1,27 @@
+#includebitsstdc++.h
+using namespace std;
+
+void printStairPaths(int n,string res){
+    
+    if(n0){
+        return;
+    }
+    
+    if(n==0){
+        coutresendl;
+        return;
+    }
+    
+    printStairPaths(n-1,res+1);
+    printStairPaths(n-2,res+2);
+    printStairPaths(n-3,res+3);
+    
+}
+
+int main(){
+    
+    int n=5;
+    string res;
+    printStairPaths(n,res);
+    
+}

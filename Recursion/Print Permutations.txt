@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void printPermutations(string s, string res){
+    
+    if(s.length()==0){
+        cout<<res<<endl;
+        return;
+    }
+    
+    for(int i=0;i<s.length();i++){
+       char l = s[i];
+       string r = s.substr(0,i)+s.substr(i+1);
+       printPermutations(r,res+l);
+    }
+    
+}
+
+int main(){
+    
+    string s="abc";
+    string res="";
+    printPermutations(s,res);
+    
+}

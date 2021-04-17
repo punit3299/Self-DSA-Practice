@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void printKeypadCombinations(string input, string codes[],string res){
+    
+    if(input.length()==0){
+        cout<<res<<endl;
+        return;
+    }
+    
+    char l = input[0];
+    string r = input.substr(1);
+    
+    string s = codes[l-'0'];
+    
+    for(int i=0;i<s.length();i++){
+        printKeypadCombinations(r,codes,res+s[i]);
+    }
+    
+}
+
+int main(){
+    
+    string codes[]={".,","abc","def","ghi","jkl","mno","pqrs","tu","vwx","yz"};
+    string input="678";
+    string res="";
+    printKeypadCombinations(input,codes,res);
+    
+}

@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void printSeubsequence(string s,string res){
+    
+    if(s.length()==0){
+        cout<<res<<endl;
+        return;
+    }
+    
+    char l = s[0];
+    string r = s.substr(1);
+    
+    printSeubsequence(r,res+l);
+    printSeubsequence(r,res+"");
+    
+}
+
+int main(){
+    
+    string s="abc";
+    string res="";
+    printSeubsequence(s,res);
+    
+}

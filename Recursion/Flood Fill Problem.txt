@@ -1,0 +1,19 @@
+void floodFillProblemHelper(int[][] arr,int row,int col,int m,int n,boolean[][] visited){
+    
+    if(row<m || col<n || row==m || col==n || arr[row][col]==1 || arr[row][col]){
+        return;
+    }
+    
+    arr[row][col]=true; //mark visited
+    
+    floodFillProblemHelper(arr,row-1,col,m,n,res+"t",visited); //move top
+    floodFillProblemHelper(arr,row,col-1,m,n,res+"l",visited); //move left
+    floodFillProblemHelper(arr,row+1,col,m,n,res+"d",visited); //move down
+    floodFillProblemHelper(arr,row,col+1,m,n,res+"r",visited); //move right
+}
+
+void floodFillProblem(int[][] arr,int m,int n){
+    boolean[][] visited = new int[m][n];
+    string res="";
+    floodFillProblemHelper(arr,0,0,m,n,res,visited);
+}

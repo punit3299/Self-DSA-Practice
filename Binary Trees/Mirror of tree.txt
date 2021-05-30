@@ -1,0 +1,13 @@
+Node* mirror(Node *root){
+    
+    if(root==NULL){
+        return NULL;;
+    }
+    
+    Node *left=mirror(root->left);
+    Node *right=mirror(root->right);
+    
+    swap(left,right);
+    
+    return root;
+}

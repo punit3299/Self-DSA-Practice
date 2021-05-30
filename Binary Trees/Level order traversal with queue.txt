@@ -1,0 +1,22 @@
+void levelOrderTraversal(Node *root){
+    
+    if(root==NULL){
+        return;
+    }
+    
+    queue<Node*> q;
+    q.push(root);
+    
+    while(!q.empty()){
+        Node *temp = q.front();
+        q.pop();
+        cout<<temp->data<<" ";
+        
+        if(root->left){
+            q.push(q->left)
+        }
+        if(root->right){
+            q.push(q->right)
+        }
+    }
+}

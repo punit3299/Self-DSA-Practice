@@ -1,0 +1,30 @@
+void levelOrderTraversal(Node *root){
+    int h=height(root);
+    for(int i=1;i<=h;i++){
+        printLevel(root,i);
+    }
+}
+
+void printLevel(Node *node, int level){
+    if(node==NULL){
+        return;
+    }
+    if(level==1){
+        cout<<node->data;
+    }else{
+        printLevel(node->left,level-1);
+        printLevel(node->right,level-1);
+    }
+}
+
+void height(Node *node){
+    
+    if(node==NULL){
+        return 0;
+    }
+    
+    int lh=height(node->left);
+    int rh=height(node->right);
+    
+    return max(lh,rh)+1;
+}

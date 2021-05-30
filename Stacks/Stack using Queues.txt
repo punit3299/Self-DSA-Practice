@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+queue<int> q1,q2;
+
+void push(int x){
+    
+   q2.push(x);
+   
+   while(!q1.empty()){
+       q2.push(q1.front());
+       q1.pop();
+   }
+   
+   swap(q1,q2);
+}
+
+void pop(){
+    
+    if(q1.empty()){
+        return;
+    }
+    
+    q1.pop();
+   
+}
+
+int main()
+{
+	push(1);
+	push(2);
+	pop();
+	push(4);
+	push(5);
+	pop();
+	push(6);
+	
+	while(!q1.empty()){
+	    cout<<q1.front()<<" ";
+	    q1.pop();
+	}
+	
+	return(0);
+}

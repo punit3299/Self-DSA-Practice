@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+stack<char> st;
+
+void insertAtBottom(char a){
+    
+    if(st.size()==0){
+        st.push(a);
+    }
+    else{
+        char x = st.top();
+        st.pop();
+        insertAtBottom(a);
+        st.push(x);
+    }
+}
+
+void reverse(){
+    
+    if(st.size()>0){
+        char a = st.top();
+        st.pop();
+        reverse();
+        insertAtBottom(a);
+    }
+    
+}
+
+int main()
+{
+  st.push('1');
+  st.push('2');
+  st.push('3');
+  st.push('4');
+  
+  reverse();
+  
+  //checking if stack is reversed or not
+  while(!st.empty()){
+      char a=st.top();
+      st.pop();
+      cout<<a<<" ";
+  }
+  
+}

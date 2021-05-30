@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int q[1000];
+int front=-1,rear=-1;
+
+void enqueue(int x){
+    
+    if(rear==999){
+        cout<<"Queue Overflow"<<endl;
+        return;
+    }
+    
+    if(front==-1){
+        front=0;
+    }
+    
+    q[++rear]=x;
+}
+
+void dequeue(){
+    
+    if(front==-1 || front>rear){
+        cout<<"Queue Underflow"<<endl;
+        return;
+    }
+
+    ++front;
+}
+
+int main()
+{
+	enqueue(1);
+	enqueue(2);
+	dequeue();
+	enqueue(4);
+	enqueue(5);
+	dequeue();
+	enqueue(6);
+	
+	for(int i=front;i<=rear;i++){
+	    cout<<q[i]<<" ";
+	}
+	
+	return(0);
+}

@@ -6,12 +6,12 @@ int sumOfLeaves(Node root, int &sum){
         return 0;
     }
     
-    if(!root-left && !root-right){
-        sum+=root-data;
+    if(!root->left && !root->right){
+        sum+=root->data;
     }
 
-    int lsum = sumOfLeaves(root-left,sum);
-    int rsum = sumOfLeaves(root-right,sum);
+    int lsum = sumOfLeaves(root->left,sum);
+    int rsum = sumOfLeaves(root->right,sum);
     
     return lsum+rsum;
 }

@@ -1,0 +1,32 @@
+void getVerticalOrders(Node *root,map<int,vector<int>> &m,int hd){
+        
+        if(root==NULL){
+            return;
+        }
+        
+        m[hd].push_back(root->data);
+        getVerticalOrders(root->left,m,hd-1);
+        getVerticalOrders(root->right,m,hd+1);
+    }
+    
+    //Function to find the vertical order traversal of Binary Tree.
+    vector<int> verticalOrder(Node *root)
+    {
+        vector<int> v;
+        if(root==NULL){
+            return v;
+        }
+        
+        map<int,vector<int>> m;
+        int hd=0;
+        getVerticalOrders(root,m,hd);
+        
+        map<int,vector<int>> :: iterator it;
+        for(it=m.begin();it!=m.end();it++){
+            for(int i=0;i<it->second.size();i++){
+                v.push_back(it->second[i]);
+            }
+        }
+        
+        return v;
+    }

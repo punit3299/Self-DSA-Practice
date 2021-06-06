@@ -1,0 +1,56 @@
+class Solution
+{
+    public:
+    
+    void verticalOrderTraversal(Node *root, map<int,vector<int>> &m, int &hd){
+        
+        if(root==NULL){
+            return;
+        }
+        
+        queue<pair<Node*,int>> q;
+        q.push(make_pair(root,hd));
+        
+        while(!q.empty()){
+            
+            pair<Node*,int> temp = q.front();
+            q.pop();
+            Node *n = temp.first;
+            int hd=temp.second;
+            
+            m[hd].push_back(n->data);
+            
+            if(n->left!=NULL){
+                q.push(make_pair(n->left,hd-1));
+            }
+            if(n->right!=NULL){
+                q.push(make_pair(n->right,hd+1));
+            }
+        }
+    }
+    
+    //Function to return a list of nodes visible from the top view 
+    //from left to right in Binary Tree.
+    vector<int> topView(Node *root)
+    {
+        vector<int> v;
+        if(root==NULL){
+            return v;
+        }
+        
+        map<int,vector<int>> m;
+        int hd=0;
+        
+        verticalOrderTraversal(root,m,hd);
+        
+        map<int,vector<int>> :: iterator it;
+        for(it=m.begin();it!=m.end();it++){
+            for(int i=0;i<it->second.size();i++){
+                if(i==0){
+                   v.push_back(it->second[i]); 
+                }
+            }
+        }
+        return v;
+    }
+};

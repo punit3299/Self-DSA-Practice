@@ -1,0 +1,23 @@
+int isSumProperty(Node *root)
+{
+    if(root==NULL || (root->left==NULL && root->right==NULL)){
+        return 1;
+    }
+    
+    int l=0,r=0;
+    
+    if(root->left!=NULL){
+       l=root->left->data; 
+    }
+    
+    if(root->right!=NULL){
+        r=root->right->data;
+    }
+   
+    if((root->data == l+r)&&isSumProperty(root->left)&&isSumProperty(root->right)){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}

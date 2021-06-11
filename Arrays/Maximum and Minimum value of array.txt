@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int arr[] = {10,43,64,12,54,87,23,36};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    
+    int maxm = INT_MIN, minm = INT_MAX;
+    
+    for(int i=0;i<n;i++){
+        maxm=max(maxm,arr[i]);
+        minm=min(minm,arr[i]);
+    }
+    
+    cout<<"Max value = "<<maxm<<endl;
+    cout<<"Min value = "<<minm;
+    
+	return(0);
+}

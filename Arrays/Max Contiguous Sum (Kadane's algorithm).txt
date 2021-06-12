@@ -1,19 +1,24 @@
-   int maxSubarraySum(int a[], int n){
-        
-        // Your code here
-        int csum=a[0],msum=a[0];
-        
-        for(int i=1;i<n;i++){
-            
-            if(csum>=0){
-                csum+=a[i];
-            }
-            else{
-                csum=a[i];
-            }
-            msum = max(msum,csum);
-        }
-        
-        return msum;
-        
-    }
+int maxSubArraySum(int a[], int n)
+{
+   int csum=a[0];
+   int msum=a[0];
+   int start = 0,end;
+   
+   for(int i=1;i<n;i++){
+       
+       if(csum>=0){
+           csum+=a[i];
+       }else{
+           csum=a[i];
+           start=i;
+       }
+       
+       if(csum>msum){
+           msum=csum;
+           end=i;
+       }
+   }
+   
+   cout<<start<<" "<<end<<endl;
+   return msum;
+}

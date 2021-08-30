@@ -1,6 +1,6 @@
 //node ->root
 
-void height(Node *node){
+int height(Node *node){
     
     if(node==NULL){
         return 0;

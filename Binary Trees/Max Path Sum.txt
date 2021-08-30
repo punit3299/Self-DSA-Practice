@@ -1,0 +1,17 @@
+int findMaxPathHelper(Node *root, int &res){
+    if(node==NULL)
+        return 0;
+        
+    int l = findMaxPathHelper(root->left,res);
+    int r = findMaxPathHelper(root->right,res);
+    
+    res = max(root->data, max(max(l,r)+root->data, l+r+root->data));
+    
+    return res;
+}
+
+int findMaxPathSum(Node *root){
+    int res=INT_MIN;
+    findMaxPathHelper(root,res);
+    return res;
+}

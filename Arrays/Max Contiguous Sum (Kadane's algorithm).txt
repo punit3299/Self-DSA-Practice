@@ -1,24 +1,36 @@
-int maxSubArraySum(int a[], int n)
+// O(N) - Kadane's Algorithm 
+
+int largestContiguousSubarray(int a[], int n)
 {
-   int csum=a[0];
-   int msum=a[0];
-   int start = 0,end;
-   
-   for(int i=1;i<n;i++){
-       
-       if(csum>=0){
-           csum+=a[i];
-       }else{
-           csum=a[i];
-           start=i;
-       }
-       
-       if(csum>msum){
-           msum=csum;
-           end=i;
-       }
-   }
-   
-   cout<<start<<" "<<end<<endl;
-   return msum;
+   int maxSum=INT_MIN, currSum=0;
+   int start=0,end=0;
+   for(int i=0;i<n;i++){
+        currSum+=a[i];
+        if(currSum>maxSum){
+            maxSum=currSum;
+          	end=i;
+        }
+        if(currSum<0){
+            currSum=0;
+          	start=i+1;
+        }
+    }
+    cout<<start<<endl<<end<<endl;
+    return maxSum;
+}
+
+// O(N2)------------------------
+
+int largestContiguousSubarray(int a[],int n){
+    int maxSum=INT_MIN;
+    for(int i=0;i<n;i++){
+        int currSum=0;
+        for(int j=i;j<n;j++){
+            currSum+a[i];
+            if(currSum>maxSum){
+                maxSum=currSum;
+            }
+        }
+    }
+    return maxSum;
 }

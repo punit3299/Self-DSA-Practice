@@ -1,0 +1,16 @@
+void printPrimeFactors(int n){
+    while(n%2==0){
+        cout<<"2 ";
+        n=n/2;
+    }
+    int sqrtValue=sqrt(n);
+    for(int i=3;i<sqrtValue;i+=2){
+        while(n%i==0){
+            cout<<i<<" ";
+        }
+    }
+    //if n is a prime number greater that 2
+    if(n>2){
+        cout<<n;
+    }
+}

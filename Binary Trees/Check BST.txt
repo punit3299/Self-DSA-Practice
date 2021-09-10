@@ -1,0 +1,21 @@
+    bool isBstHelper(Node *root, Node *&prev){
+        if(root){
+            if(!isBstHelper(root->left,prev)){
+                return false;
+            }
+            if(prev!=NULL && root->data<=prev->data){
+                return false;
+            }
+            prev=root;
+            if(!isBstHelper(root->right,prev)){
+                return false;
+            }
+        }
+        return true;
+    }
+    bool isBST(Node* root) 
+    {
+        // Your code here
+        Node *prev=NULL;
+        return isBstHelper(root,prev);
+    }

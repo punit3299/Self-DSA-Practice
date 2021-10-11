@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+void fixSorting(int a[],int n){
+    int bpIndex;
+    for(int i=0;i<n-1;i++){
+        if(a[i]>a[i+1]){
+            bpIndex=i;
+            break;
+        }
+    }
+    reverse(a,a+bpIndex+1);
+    reverse(a+bpIndex+1,a+n);
+    reverse(a,a+n);
+}
+int main(){
+    int a[] = { 3,4,5,1,2 };
+    int n = sizeof(a) / sizeof(a[0]), k = 3;
+    fixSorting(a,n);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    return 0;
+}

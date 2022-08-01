@@ -41,10 +41,7 @@ vector <int> bottomView(Node *root)
         
         map<int,vector<int>> :: iterator it;
         for(it=m.begin();it!=m.end();it++){
-            for(int i=0;i<it->second.size();i++){
-                if(i==it->second.size()-1){
-                   v.push_back(it->second[i]); 
-                }
+                v.push_back(it->second[it->second.size()-1]); 
             }
         }
         return v;

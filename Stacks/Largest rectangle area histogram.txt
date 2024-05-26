@@ -1,58 +1,45 @@
-#include<bits/stdc++.h>
-using namespace std;
+int largestRectangleArea(vector<int>& heights) {
+        int n = heights.size();
+        vector<int> left(n), right(n);
+        stack<int> st;
 
-int main()
-{
-	int a[] = {6, 2, 5, 4, 5, 1, 6};
-	int n=sizeof(a)/sizeof(a[0]);
-	
-	int *l=new int[n];
-	l[0]=-1;
-	stack<int> st;
-	st.push(0);
-	
-	for(int i=1;i<n;i++){
-	    while(!st.empty() && a[i]<a[st.top()]){
-	        st.pop();
-	    }
-	    if(st.size()==0){
-	        l[i]=-1;
-	    }
-	    else{
-	        l[i]=st.top();
-	    }
-	    st.push(i);
-	}
-	
-	int *r=new int[n];
-	r[n-1]=n;
-	stack<int> st1;
-	st1.push(n-1);
-	
-	for(int i=n-2;i>=0;i--){
-	    while(!st1.empty() && a[i]<a[st1.top()]){
-	        st1.pop();
-	    }
-	    if(st1.size()==0){
-	        r[i]=n;
-	    }
-	    else{
-	        r[i]=st1.top();
-	    }
-	    st1.push(i);
-	}
-	
-	
-	int maxArea=0;
-	for(int i=0;i<n;i++){
-	    int length=a[i];
-	    int width=r[i]-l[i]-1;
-	    int area=length*width;
-	    if(area>maxArea){
-	        maxArea=area;
-	    }
-	}
-	cout<<maxArea;
-	
-	return(0);
-}
+        // calcaulating next smaller element to left
+        st.push(0);
+        left[0]=-1;
+        for(int i=1;i<n;i++){
+            while(!st.empty() && heights[st.top()]>heights[i]){
+                st.pop();
+            }
+            if(st.empty()){
+                left[i] = -1;
+            }else{
+                left[i] = st.top();
+            }
+            st.push(i);
+        }
+
+        st = stack<int>();
+
+        // calcaulating next smaller element to right
+        right[n-1]=n;
+        st.push(n-1);
+        for(int i=n-2;i>=0;i--){
+            while(!st.empty() && heights[st.top()]>=heights[i]){
+                st.pop();
+            }
+            if(st.empty()){
+                right[i] = n;
+            }else{
+                right[i] = st.top();
+            }
+            st.push(i);
+        }
+
+        int maxArea = INT_MIN;
+        for(int i=0;i<n;i++){
+            int area = (right[i]-left[i]-1)*heights[i];
+            maxArea = max(maxArea, area);
+        }
+
+        return maxArea;
+    }

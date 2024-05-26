@@ -1,17 +1,19 @@
-int findMaxPathHelper(Node *root, int &res){
-    if(node==NULL)
-        return 0;
-        
-    int l = findMaxPathHelper(root->left,res);
-    int r = findMaxPathHelper(root->right,res);
-    
-    res = max(root->data, max(max(l,r)+root->data, l+r+root->data));
-    
-    return res;
+int maxPathSum(TreeNode* root) {
+        int res = INT_MIN;
+        helper(root, res);
+        return res;
 }
 
-int findMaxPathSum(Node *root){
-    int res=INT_MIN;
-    findMaxPathHelper(root,res);
-    return res;
+int helper(TreeNode* root, int &res){
+        if(root == NULL)
+            return 0;
+            
+        int left = helper(root->left, res);
+        int right = helper(root->right, res);
+        
+        int tempAns = max(max(left,right) + root->val, root->val);
+        int ans = max(tempAns, left + right + root->val);
+        res = max(res, ans);
+        return tempAns;
 }
+    
